@@ -14,7 +14,7 @@ jira::getIssueByCode() {
 
     local jira_issue_payload
     jira_issue_payload=$(jira::makeRequest)
-
+    echo "here"
     if [[ $jira_issue_payload == false ]]; then
       echo false
     else
@@ -33,12 +33,7 @@ jira::makeRequest() {
     bodyAndHttpCodeDelimiter="``,###`` "
 
     local response
-    echo "curl -X GET \
-          -H \"Content-type: application/json\" \
-          --user ${jira_token} \
-          --write-out \"${bodyAndHttpCodeDelimiter}%{http_code}\" \
-          --silent \
-          \"$endpoint\""
+
     response=$(
         curl -X GET \
           -H "Content-type: application/json" \
