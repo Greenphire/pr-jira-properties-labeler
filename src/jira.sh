@@ -33,6 +33,12 @@ jira::makeRequest() {
     bodyAndHttpCodeDelimiter="``,###`` "
 
     local response
+    echo "curl -X GET \
+          -H \"Content-type: application/json\" \
+          --user ${jira_token} \
+          --write-out \"${bodyAndHttpCodeDelimiter}%{http_code}\" \
+          --silent \
+          \"$endpoint\""
     response=$(
         curl -X GET \
           -H "Content-type: application/json" \
