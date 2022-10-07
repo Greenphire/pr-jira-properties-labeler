@@ -60,11 +60,12 @@ jira::getPriorityOf() {
 
     local issue
     issue=$(jira::getIssueByCode "$issue_code")
+    field=$(action::input:issueProperties)
 
     if [[ $issue == false ]];then
       echo false
       exit 0
     fi
 
-    echo "$issue" | jq --raw-output .fields.priority.name
+    echo "$issue" | jq --raw-output ".fields.$field"
 }
