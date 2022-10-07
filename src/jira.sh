@@ -14,7 +14,7 @@ jira::getIssueByCode() {
 
     local jira_issue_payload
     jira_issue_payload=$(jira::makeRequest)
-    echo "here"
+
     if [[ $jira_issue_payload == false ]]; then
       echo false
     else

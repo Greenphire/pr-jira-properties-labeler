@@ -41,8 +41,6 @@ action::getJiraCodeFromPRTitle() {
     local pr_title
     pr_title=$(github::getPullRequestTitle)
     local jira_code
-    echo "$pr_title"
-    echo "$(action::input::regexpJiraCodeOnPrTitle)"
 
     jira_code=$(echo "$pr_title" | sed -r "s/$(action::input::regexpJiraCodeOnPrTitle)/\1/")
 
@@ -80,7 +78,7 @@ action::run() {
       echo "Nothing to do, exiting..."
       exit 0
     fi
-
+    echo "Issue found: $issue_code"
     echo "Adding priority label to the PR..."
 	  action::addPriorityLabel "$issue_code"
 }
