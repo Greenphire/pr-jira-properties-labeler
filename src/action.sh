@@ -42,7 +42,7 @@ action::getJiraCodeFromPRTitle() {
     pr_title=$(github::getPullRequestTitle)
     local jira_code
 
-    jira_code=$(echo "$pr_title" | sed -r "s/$(action::input::regexpJiraCodeOnPrTitle)/\1/")
+    jira_code=$(echo "$pr_title" | sed -r "s/$(action::input::regexpJiraCodeOnPrTitle)/\2/")
 
     if [[ "$pr_title" == "$jira_code" ]]; then
       echo "$jira_code"
